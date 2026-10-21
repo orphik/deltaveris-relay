@@ -1,0 +1,21 @@
+services:
+  - type: worker
+    name: deltaveris-relay
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 -u deltaveris_relay.py
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: KALSHI_KEY_ID
+        sync: false
+      - key: KALSHI_PRIVATE_KEY_B64
+        sync: false
+      - key: MAX_ORDER_SIZE_USD
+        value: "10.00"
+      - key: MAX_ACCEPTABLE_ASK_CENTS
+        value: "92"
+      - key: MIN_IMPLIED_MARGIN_CENTS
+        value: "8"
+      - key: WHITELISTED_STATIONS
+        value: "KNYC,KMDW,KAUS,KMIA,KLAX,KDEN,KIAH,KPHL,KPHX,KLAS,KSFO,KSEA"
